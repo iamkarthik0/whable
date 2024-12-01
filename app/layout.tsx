@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Gabarito, Bitter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/layout/Navbar";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const gabarito = Gabarito({
+  subsets: ['latin'],
+  variable: '--font-gabarito',
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const bitter = Bitter({
+  subsets: ['latin'],
+  variable: '--font-bitter',
 });
 
 export const metadata: Metadata = {
@@ -26,8 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${gabarito.variable} ${bitter.variable} antialiased `}
       >
+      
         {children}
       </body>
     </html>
