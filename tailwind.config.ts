@@ -70,6 +70,11 @@ export default {
       fontFamily: {
         gabarito: ['var(--font-gabarito)'],
         bitter: ['var(--font-bitter)']
+      },
+
+	  backgroundImage: {
+        'hero-pattern': "url('/image/home/background.svg')",
+        'footer-texture': "url('/img/footer-texture.png')",
       }
   	}
   },

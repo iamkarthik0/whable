@@ -68,8 +68,8 @@ const Footer = () => {
     },
   ];
   return (
-    <footer className=" max-w-screen-2xl mx-auto  bg-[#FFDD54] ">
-      <div className="container mx-auto px-6 md:px-7 py-12">
+    <footer className=" bg-[#FFDD54] ">
+      <div className=" px-8 lg:px-[156px] py-12">
         <div className=" flex flex-col gap-6 md:flex-row justify-between">
           {/* Logo & Description */}
           <div className="flex flex-1 flex-col sm:flex-row md:flex-col  justify-between gap-5">

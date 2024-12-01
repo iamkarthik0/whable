@@ -133,11 +133,11 @@ body {
 }
 
 .h1 {
-  @apply font-bitter text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl;
+  @apply text-[#252525] font-bitter leading-[48px] sm:text-[48px] sm:leading-[52px]  text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl;
 }
 
 .h2 {
-  @apply font-bitter font-medium text-[2rem] leading-[2.625rem] sm:leading-[3rem]    sm:text-[2.25rem] md:text-[2.5rem] md:leading-[3.125rem];
+  @apply  text-[#252525] font-bitter font-medium text-[2rem] leading-[2.625rem] sm:leading-[3rem]    sm:text-[2.25rem] md:text-[40px] md:leading-[50px];
 }
 
 .h3 {
@@ -145,6 +145,9 @@ body {
 }
 .h4 {
   @apply text-[1.75rem] leading-[2.375rem] font-bold md:text-[2rem] md:leading-[2.75rem];
+}
+h5 {
+  @apply  text-[20px] leading-[28px] font-gabarito font-medium text-[#363636]
 }
 
 .paragraph {
@@ -159,6 +162,14 @@ body {
 }
 .btn-hover {
   @apply bg-white;
+}
+
+.p-container {
+  @apply px-8  sm:px-[90px] lg:px-[156px]  lg:py-[72px] sm:py-[64px] py-[40px] 
+}
+
+.main-container {
+  @apply  max-w-[1440px] mx-auto px-[156px];
 }
 
 .text {

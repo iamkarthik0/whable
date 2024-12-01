@@ -30,8 +30,8 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="max-w-screen-2xl mx-auto shadow-md h-[72px] flex items-center relative">
-      <div className="container mx-auto flex items-center justify-between gap-6 px-7">
+    <div className="  shadow-md h-[72px] flex items-center relative">
+      <div className="w-full px-8 lg:px-[156px] flex items-center justify-between gap-6 ">
         {/* Logo */}
         <div className="flex items-center gap-4 text-[28px] font-bold leading-[38px] text-primary">
           <div className="w-[48px] h-[48px] relative aspect-square md:h-[56px] md:w-[56px]">
@@ -49,7 +49,7 @@ const Navbar = () => {
         </div>
 
         {/* Navigation Links - Hidden on Mobile */}
-        <div className="hidden md:flex flex-1 font-semibold text-[18px] text space-x-2 font-gabarito">
+        <div className="hidden sm:flex flex-1 font-semibold text-[18px] text space-x-2 font-gabarito">
           {navLinks.map((link) => (
             <Button
               key={link.href}
@@ -69,7 +69,7 @@ const Navbar = () => {
             <SheetTrigger asChild>
               <Button
                 variant="outline"
-                className="md:hidden rounded-full text-[14px] leading-[16px] text-primary font-bold border-primary border-[2px]"
+                className="sm:hidden rounded-full text-[14px] leading-[16px] text-primary font-bold border-primary border-[2px]"
               >
                 <Image alt="menu" width={17} height={17} src="/icons/menu.png" className="mr-2" />
                 MENU

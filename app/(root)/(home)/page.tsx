@@ -1,17 +1,18 @@
-import { Button } from "@/components/ui/button";
+import Hero from "@/components/shared/home/Hero";
+import { Section } from "@/components/shared/home/Section";
+
 import React from "react";
 
 export default function page() {
   return (
-    <div className=" pt-16">
+    <div className=" bg-hero-pattern">
     
+    <Hero/>
 
-      <h1 className="h1 font-bitter bg-[#5A228B]">asjdasd</h1>
-      <h1 className="h2  text-primary">asjdasd</h1>
+    <Section/>
 
-      <div className=" container mx-auto w-full bg-red-500">
-      <Button>sadasd</Button>
-      </div>
+
+   
     </div>
   );
 }
