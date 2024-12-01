@@ -30,7 +30,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="  shadow-md h-[72px] flex items-center relative">
+    <div className="  shadow-md h-[72px] flex items-center  sticky top-0 z-50 bg-white ">
       <div className="w-full px-8 lg:px-[156px] flex items-center justify-between gap-6 ">
         {/* Logo */}
         <div className="flex items-center gap-4 text-[28px] font-bold leading-[38px] text-primary">

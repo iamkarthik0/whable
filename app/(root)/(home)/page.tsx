@@ -5,7 +5,7 @@ import React from "react";
 
 export default function page() {
   return (
-    <div className=" bg-hero-pattern">
+    <div className=" bg-hero-pattern bg-no-repeat">
     
     <Hero/>
 
