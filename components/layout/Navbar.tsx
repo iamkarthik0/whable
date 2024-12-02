@@ -1,11 +1,16 @@
 "use client";
 import Image from "next/image";
-import Link  from "next/link";
+import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
 import { usePathname } from "next/navigation";
 
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -16,12 +21,12 @@ const Navbar = () => {
       href: "/",
     },
     {
-      label: "About", 
+      label: "About",
       href: "/about",
     },
     {
       label: "Services",
-      href: "/services", 
+      href: "/services",
     },
     {
       label: "Contact",
@@ -33,17 +38,11 @@ const Navbar = () => {
     <div className="  shadow-md h-[72px] flex items-center  sticky top-0 z-50 bg-white ">
       <div className="w-full px-8 lg:px-[65px] xl:px-[156px] flex items-center justify-between gap-6 ">
         {/* Logo */}
-        <div className="flex items-center gap-4 text-[28px] font-bold leading-[38px] text-primary">
+        <div className="flex items-center gap-4 ">
           <div className=" ">
-            <Image 
-              alt="logo" 
-              src="/logo.png" 
-                width={50}
-                height={50}
-        
-            />
+            <Image alt="logoss" src="/logo.png" width={50} height={50} />
           </div>
-          <h1 className="hidden lg:block text-3xl font-gabarito    text-primary">
+          <h1 className="hidden lg:block  font-gabarito  text-[28px] font-bold leading-[38px]   text-primary">
             Whable
           </h1>
         </div>
@@ -71,19 +70,28 @@ const Navbar = () => {
                 variant="outline"
                 className="sm:hidden rounded-full text-[14px] leading-[16px] text-primary font-bold border-primary border-[2px]"
               >
-                <Image alt="menu" width={17} height={17} src="/icons/menu.png" className="mr-2" />
+                <Image
+                  alt="menu"
+                  width={17}
+                  height={17}
+                  src="/icons/menu.png"
+                  className="mr-2"
+                />
                 MENU
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white p-0">
+            <SheetContent
+              side="right"
+              className="w-[300px] sm:w-[400px] bg-white p-0"
+            >
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="flex flex-col py-8 px-6">
                 {/* Sheet Header */}
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-[48px] h-[48px] relative">
-                    <Image 
-                      alt="logo" 
-                      src="/logo.png" 
+                    <Image
+                      alt="logo"
+                      src="/logo.png"
                       fill
                       sizes="48px"
                       className="object-contain"
@@ -109,11 +117,11 @@ const Navbar = () => {
               </div>
             </SheetContent>
           </Sheet>
-          
+
           {/* Login Button */}
           <div>
             <Button className="rounded-full">
-              <Image alt="user" width={17} height={17} src="/icons/user.png"  />
+              <Image alt="user" width={17} height={17} src="/icons/user.png" />
               Accedi
             </Button>
           </div>
