@@ -1,13 +1,8 @@
-import { createClient } from 'next-sanity'
+
+import { client } from '@/lib/sanityClient'
 import { NextResponse } from 'next/server'
 
-const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
-  apiVersion: "2023-12-02",
-  token: process.env.SANITY_API_TOKEN,
-  useCdn: false,
-})
+
 
 export async function POST(request: Request) {
   try {
@@ -15,7 +10,7 @@ export async function POST(request: Request) {
     const { name, email } = body
 
     const doc = {
-      _type: 'contact',
+      _type: 'contactSubmission',
       name,
       email,
       createdAt: new Date().toISOString()
