@@ -34,12 +34,12 @@ const Navbar = () => {
       <div className="w-full px-8 lg:px-[65px] xl:px-[156px] flex items-center justify-between gap-6 ">
         {/* Logo */}
         <div className="flex items-center gap-4 text-[28px] font-bold leading-[38px] text-primary">
-          <div className="w-[48px] h-[48px] relative aspect-square md:h-[56px] md:w-[56px]">
+          <div className="w-[50px] h-[50px] relative  ">
             <Image 
               alt="logo" 
               src="/logo.png" 
               fill
-           
+            sizes="50px"
               className="object-contain"
             />
           </div>
