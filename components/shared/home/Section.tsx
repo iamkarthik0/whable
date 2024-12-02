@@ -38,7 +38,7 @@ export const Section = () => {
 
       <div className=" p-container">
         <div className=" flex flex-col lg:flex-row gap-10">
-          <div className=" flex-1 flex justify-center items-center lg:order-last">
+          <div className=" flex-1 flex justify-center items-center  lg:order-last">
             <Image
               src="/image/home/main-2.png"
               alt="main1"

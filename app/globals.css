@@ -133,7 +133,7 @@ body {
 }
 
 .h1 {
-  @apply text-[#252525] font-bitter leading-[48px] sm:text-[48px] sm:leading-[52px]  text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl;
+  @apply text-[#252525] font-bitter leading-[48px] sm:text-[48px] sm:leading-[52px]  text-3xl font-medium tracking-tight sm:text-4xl xl:text-5xl;
 }
 
 .h2 {
@@ -165,7 +165,7 @@ h5 {
 }
 
 .p-container {
-  @apply px-8  sm:px-[90px] lg:px-[156px]  lg:py-[72px] sm:py-[64px] py-[40px] 
+  @apply px-8  sm:px-[90px] lg:px-[65px] xl:px-[156px]  lg:py-[72px] sm:py-[64px] py-[40px] 
 }
 
 .main-container {

@@ -8,8 +8,37 @@ const Hero = () => {
     <div className=" relative   ">
 
       <div className="    ">
+      <div className=" flex flex-col lg:flex-row gap-10 lg:gap-0">
+        {/* ------------- div 1------------- */}
+        <div className="flex-1 flex justify-center items-center   ">
+          <div className="  space-y-6  py-10 lg:py-0 px-8  sm:px-[90px] lg:pl-[65px]   xl:pl-[156px] lg:pr-[2.65rem] xl:pr-[4.25rem] ">
+            <h1 className=" h1 leading-[60px]">
+            Il viaggio di Marco e la nascita di <span className=" text-primary">Whable</span>
+            </h1>
+
+            <p>
+            Unisciti a Whable e diventa parte di una community che sta rendendo il mondo più accessibile.
+            </p>
+
+            <Button className="gap-2 w-full sm:max-w-[268px]  font-gabarito font-bold">
+                Abbatti le barriere <ArrowRight size={16} />
+              </Button>
+          </div>
+        </div>
+        {/* ------------- div 1------------- */}
+        {/* ------------- div 2------------- */}
+        <div className=" flex-1 flex justify-center items-center">
+          <Image
+            src="/image/home/hero-img.png"
+            alt="hero"
+            width={900}
+            height={450}
+          />
+        </div>
+        {/* ------------- div 2------------- */}
+      </div>
         {/* ---------------------------------hero section ------------------------------- */}
-        <div className="  z-10 flex flex-col lg:flex-row gap-10 md:gap-2 md:justify-between py-10  md:py-0 ">
+        {/* <div className="  z-10 flex flex-col lg:flex-row gap-10 md:gap-2 md:justify-between py-10  md:py-0 ">
           <div className=" flex-1 flex  ">
             <div className="  space-y-7  px-8 sm:px-0  sm:ml-[90px] py-10 lg:ml-[156px]  justify-center flex flex-col      ">
               <h1 className="  h1">
@@ -39,7 +68,7 @@ const Hero = () => {
               height={450}
             />
           </div>
-        </div>
+        </div> */}
 
         {/* ---------------------------------hero section ------------------------------- */}
       </div>
