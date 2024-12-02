@@ -40,7 +40,7 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center gap-4 ">
           <div className=" ">
-            <Image alt="logoss" src="/logo.png" width={50} height={50} />
+            <Image alt="logo" src="/main-logo.png" width={50} height={50} />
           </div>
           <h1 className="hidden lg:block  font-gabarito  text-[28px] font-bold leading-[38px]   text-primary">
             Whable
