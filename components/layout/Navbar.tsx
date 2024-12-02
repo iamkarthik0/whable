@@ -39,7 +39,7 @@ const Navbar = () => {
               alt="logo" 
               src="/logo.png" 
               fill
-              sizes="(max-width: 768px) 48px, 56px"
+           
               className="object-contain"
             />
           </div>
