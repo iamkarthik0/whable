@@ -40,7 +40,7 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center gap-4 ">
           <div className=" ">
-            <Image alt="logo" src="/main-logo.png" width={50} height={50} />
+            <Image alt="logo" src="/logo.png" width={50} height={50} />
           </div>
           <h1 className="hidden lg:block  font-gabarito  text-[28px] font-bold leading-[38px]   text-primary">
             Whable
@@ -88,15 +88,7 @@ const Navbar = () => {
               <div className="flex flex-col py-8 px-6">
                 {/* Sheet Header */}
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="w-[48px] h-[48px] relative">
-                    <Image
-                      alt="logo"
-                      src="/logo.png"
-                      fill
-                      sizes="48px"
-                      className="object-contain"
-                    />
-                  </div>
+                <Image alt="logo" src="/logo.png" width={50} height={50} />
                   <h2 className="text-2xl font-gabarito font-bold  text-primary">
                     Whable
                   </h2>
