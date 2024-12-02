@@ -75,6 +75,9 @@ export default {
 	  backgroundImage: {
         'hero-pattern': "url('/image/home/background.svg')",
         'footer-texture': "url('/img/footer-texture.png')",
+		'hero-1': "url('/image/home/mobile-back.svg')",
+		'hero-2': "url('/image/home/tab-background.svg')",
+		'hero-3': "url('/image/home/background.svg')",
       }
   	}
   },
