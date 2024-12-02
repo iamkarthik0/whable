@@ -1,9 +1,9 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
-import { useFormStatus } from 'react-dom'
-import { useActionState } from 'react'
-import { submitContact } from '@/app/actions/submitContact'
+import { useRef, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -15,56 +15,70 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useToast } from '@/hooks/use-toast'
-import { useForm } from 'react-hook-form'
 
-function SubmitButton() {
-  const { pending } = useFormStatus()
-  return (
-    <Button type="submit" disabled={pending}>
-      {pending ? 'Sending...' : 'Send Message'}
-    </Button>
-  )
-}
+const formSchema = z.object({
+  name: z.string().min(2, {
+    message: "Name must be at least 2 characters.",
+  }),
+  email: z.string().email({
+    message: "Please enter a valid email address.",
+  }),
+})
+
+type FormValues = z.infer<typeof formSchema>
 
 export function ContactForm() {
-  const form = useForm()
-  const [state, formAction] = useActionState(submitContact, { success: false, errors: {} })
-  const formRef = useRef<HTMLFormElement>(null)
+  const [isLoading, setIsLoading] = useState(false)
   const { toast } = useToast()
-  const [isMounted, setIsMounted] = useState(false)
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+    },
+  })
 
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
+  async function onSubmit(values: FormValues) {
+    setIsLoading(true)
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      })
 
-  useEffect(() => {
-    if (!isMounted) return
+      const data = await response.json()
 
-    if (state.success) {
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong')
+      }
+
       toast({
         title: "Success",
         description: "Your message has been sent successfully.",
         className: "bg-primary text-white border-none",
       })
-      formRef.current?.reset()
-    } else if (state.errors && Object.keys(state.errors).length > 0) {
+
+      form.reset()
+    } catch (error) {
       toast({
         title: "Error",
-        description: "There was a problem submitting your message. Please check the form and try again.",
+        description: error instanceof Error ? error.message : "Failed to send message",
         variant: "destructive",
         className: "bg-red-500 text-white border-none",
       })
+    } finally {
+      setIsLoading(false)
     }
-  }, [state, toast, isMounted])
-
-  if (!isMounted) {
-    return null
   }
 
   return (
     <Form {...form}>
-      <form ref={formRef} action={formAction} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
+          control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem>
@@ -72,11 +86,12 @@ export function ContactForm() {
               <FormControl>
                 <Input placeholder="Your name" {...field} />
               </FormControl>
-              {state.errors?.name && <FormMessage>{state.errors.name[0]}</FormMessage>}
+              <FormMessage />
             </FormItem>
           )}
         />
         <FormField
+          control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
@@ -84,11 +99,17 @@ export function ContactForm() {
               <FormControl>
                 <Input type="email" placeholder="Your email" {...field} />
               </FormControl>
-              {state.errors?.email && <FormMessage>{state.errors.email[0]}</FormMessage>}
+              <FormMessage />
             </FormItem>
           )}
         />
-        <SubmitButton />
+        <Button 
+          type="submit" 
+          disabled={isLoading}
+          className="w-full sm:w-auto"
+        >
+          {isLoading ? 'Sending...' : 'Send Message'}
+        </Button>
       </form>
     </Form>
   )
