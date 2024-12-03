@@ -38,6 +38,8 @@ const Navbar = () => {
     },
   ];
 
+  const [open, setOpen] = React.useState(false);
+
   return (
     <div className="  shadow-md h-[72px] flex items-center  sticky top-0 z-50 bg-white ">
       <div className="w-full px-8 lg:px-[65px] xl:px-[156px] flex items-center justify-between gap-6 ">
@@ -70,7 +72,7 @@ const Navbar = () => {
 
         <div className="flex gap-4">
           {/* Mobile Menu Button */}
-          <Sheet>
+          <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button
                 variant="outline"
@@ -104,6 +106,7 @@ const Navbar = () => {
                     <Link
                       key={link.href}
                       href={link.href}
+                      onClick={() => setOpen(false)}
                       className={`block p-4 text-[#521F7E] hover:bg-[#F0ECF4] rounded-lg transition-colors duration-200 text-lg font-medium ${
                         pathname === link.href ? "bg-[#E2D9EA]" : ""
                       }`}

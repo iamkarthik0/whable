@@ -118,9 +118,9 @@ export function ContactForm() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent className="text-[#525252] focus-visible:ring-primary ">
-                  <SelectItem value="option1">Option 1</SelectItem>
-                  <SelectItem value="option2">Option 2</SelectItem>
-                  <SelectItem value="option3">Option 3</SelectItem>
+                  <SelectItem value="option1">Whabler</SelectItem>
+                  <SelectItem value="option2">Angel</SelectItem>
+                  <SelectItem value="option3">Host</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
