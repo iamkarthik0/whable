@@ -1,57 +1,45 @@
 'use server'
 
-import { createClient } from '@sanity/client'
-import { z } from 'zod'
-
-const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
-  useCdn: false,
-  token: process.env.SANITY_API_TOKEN,
-})
+import { client } from '@/lib/sanityClient'
+import * as z from 'zod'
 
 const formSchema = z.object({
   name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
+    message: "Name must be at least 2 characters."
   }),
   email: z.string().email({
-    message: "Please enter a valid email address.",
+    message: "Please enter a valid email address."
   }),
+  option: z.string().optional()
 })
 
-type FormState = {
-  success: boolean;
-  errors: {
-    name?: string[];
-    email?: string[];
-    server?: string[];
-  };
-}
+type FormData = z.infer<typeof formSchema>
 
-export async function submitContact(prevState: FormState, formData: FormData): Promise<FormState> {
-  const validatedFields = formSchema.safeParse({
-    name: formData.get('name'),
-    email: formData.get('email'),
-  })
+export async function submitContact(values: FormData) {
+  const result = formSchema.safeParse(values)
 
-  if (!validatedFields.success) {
-    return { success: false, errors: validatedFields.error.flatten().fieldErrors }
+  if (!result.success) {
+    return { 
+      success: false, 
+      message: "Validation failed",
+      errors: result.error.flatten().fieldErrors 
+    }
   }
 
-  const { name, email } = validatedFields.data
+  const { name, email, option } = result.data
 
   try {
     await client.create({
       _type: 'contactSubmission',
       name,
       email,
+      option,
       submittedAt: new Date().toISOString(),
     })
 
-    return { success: true, errors: {} }
-    
+    return { success: true, message: 'Grazie per averci contattato!' }
   } catch (error) {
-    console.error('Error submitting form:', error)
-    return { success: false, errors: { server: ['Failed to submit the form. Please try again.'] } }
+    console.error('Error submitting contact form:', error)
+    return { success: false, message: 'Errore durante l\'invio del modulo. Per favore riprova.' }
   }
 }

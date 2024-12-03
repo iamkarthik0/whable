@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { getTeamMembers } from "@/app/actions/getTeamMember";
 
 const items = [
   { id: 1, content: "Item 1" },
@@ -23,18 +24,40 @@ const items = [
   { id: 8, content: "Item 8" },
 ];
 
+
+interface TeamMember {
+  _id: string;
+  name: string;
+  position: string;
+  bio: string;
+  avatarUrl: string;
+}
+
 export function ResponsiveCarousel() {
   const [api, setApi] = React.useState<any>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
   const [autoSlide, setAutoSlide] = React.useState(true);
   const [itemsPerSlide, setItemsPerSlide] = useState(1);
-
+  const [loading, setLoading] = useState(true);
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const scrollNext = useCallback(() => {
     if (api) {
       api.scrollNext();
     }
   }, [api]);
+
+  useEffect(() => {
+    async function fetchTeamMembers() {
+      const result = await getTeamMembers();
+      if (result.success) {
+        setTeamMembers(result.data);
+      }
+      setLoading(false);
+    }
+    fetchTeamMembers();
+  }, []);
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -79,7 +102,7 @@ export function ResponsiveCarousel() {
     setAutoSlide((prev) => !prev);
   };
 
-  const dotCount = Math.ceil(items.length / itemsPerSlide);
+  const dotCount = Math.ceil(teamMembers.length / itemsPerSlide);
 
   return (
     <div className="w-full pt-12 ">
@@ -91,58 +114,52 @@ export function ResponsiveCarousel() {
           loop: true,
         }}
       >
-        <CarouselContent>
-          {items.map((item, index) => (
+              <CarouselContent>
+          {teamMembers.map((member) => (
             <CarouselItem
-              key={item.content}
-              className="md:basis-1/2 lg:basis-1/4  px-8"
+              key={member._id}
+              className="md:basis-1/2 lg:basis-1/4 px-8"
             >
-              {/* <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <span className="text-3xl font-semibold">{item.content}</span>
-                </CardContent>
-              </Card> */}
-
-              <div className="font-gabarito w-full flex  space-y-4 justify-center items-center flex-col">
+              <div className="font-gabarito w-full flex space-y-4 justify-center items-center flex-col">
                 <Image
-                  alt="avatar"
+                  alt={`${member.name}'s avatar`}
                   width={252}
                   height={252}
-                  src="/image/about/avatar.png"
-                  className=" rounded-full"
+                  src={member.avatarUrl}
+                  className="rounded-full"
                 />
 
-                <div className=" text-[#252525]">
-                  <h3 className="text-[24px] leading-[32px] ">Marco Altea</h3>
-                  <p className="text-center">CEO</p>
+                <div className="text-[#252525]">
+                  <h3 className="text-[24px] leading-[32px]">{member.name}</h3>
+                  <p className="text-center">{member.position}</p>
                 </div>
 
                 <p className="text-center text-[16px] leading-[20px]">
-                  As the CEO of Whable, I am proud of the strides we've made in
-                  pushing the boundaries of innovation and success. Our journey
-                  has been challenging yet incredibly rewarding
+                  {member.bio}
                 </p>
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
-      <div className="pt-12 text-center">
-        {Array.from({ length: dotCount }).map((_, index) => (
-          <Button
-            key={index}
-            variant="ghost"
-            size="sm"
-            className={cn(
-              "w-4 h-4 p-0 rounded-full mx-1",
-              Math.floor(current / itemsPerSlide) === index
-                ? "bg-primary"
-                : "bg-[#C4C4C4]"
-            )}
-            onClick={() => api?.scrollTo(index * itemsPerSlide)}
-          />
-        ))}
-      </div>
+      {teamMembers.length > 4 && (
+        <div className="pt-12 text-center">
+          {Array.from({ length: dotCount }).map((_, index) => (
+            <Button
+              key={index}
+              variant="ghost"
+              size="sm"
+              className={cn(
+                "w-4 h-4 p-0 rounded-full mx-1",
+                Math.floor(current / itemsPerSlide) === index
+                  ? "bg-primary"
+                  : "bg-[#C4C4C4]"
+              )}
+              onClick={() => api?.scrollTo(index * itemsPerSlide)}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

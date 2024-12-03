@@ -21,15 +21,19 @@ const Navbar = () => {
       href: "/",
     },
     {
-      label: "About",
+      label: "Chi Siamo",
       href: "/about",
     },
     {
-      label: "Services",
-      href: "/services",
+      label: "Missione",
+      href: "/mission",
     },
     {
-      label: "Contact",
+      label: "Donazioni",
+      href: "/donation",
+    },
+    {
+      label: "Contatti",
       href: "/contact",
     },
   ];
@@ -38,14 +42,16 @@ const Navbar = () => {
     <div className="  shadow-md h-[72px] flex items-center  sticky top-0 z-50 bg-white ">
       <div className="w-full px-8 lg:px-[65px] xl:px-[156px] flex items-center justify-between gap-6 ">
         {/* Logo */}
-        <div className="flex items-center gap-4 ">
+
+        <Link href="/" className="flex items-center gap-4 ">
+          {" "}
           <div className=" ">
             <Image alt="logo" src="/logo.png" width={50} height={50} />
           </div>
           <h1 className="hidden lg:block  font-gabarito  text-[28px] font-bold leading-[38px]   text-primary">
             Whable
           </h1>
-        </div>
+        </Link>
 
         {/* Navigation Links - Hidden on Mobile */}
         <div className="hidden sm:flex flex-1 font-semibold text-[18px] text space-x-2 font-gabarito">
@@ -88,7 +94,7 @@ const Navbar = () => {
               <div className="flex flex-col py-8 px-6">
                 {/* Sheet Header */}
                 <div className="flex items-center gap-4 mb-8">
-                <Image alt="logo" src="/logo.png" width={50} height={50} />
+                  <Image alt="logo" src="/logo.png" width={50} height={50} />
                   <h2 className="text-2xl font-gabarito font-bold  text-primary">
                     Whable
                   </h2>

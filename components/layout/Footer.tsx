@@ -41,15 +41,16 @@ const Footer = () => {
           <div className="flex flex-1 flex-col sm:flex-row md:flex-col justify-between gap-5">
             <div className="flex flex-col gap-4 mb-4">
               <div className="flex items-center gap-4">
-                <div className="w-[48px] h-[48px] relative">
-                  <Image
+                <Link href="/" className="w-[48px] h-[48px] relative">
+                <Image
                     alt="Whable logo"
                     src="/footer.png"
                     fill
                     sizes="48px"
                     className="object-contain"
                   />
-                </div>
+                </Link>
+            
                 <h2 className="text-2xl font-gabarito font-bold text-[28px] leading-[38px] text-primary">
                   Whable
                 </h2>

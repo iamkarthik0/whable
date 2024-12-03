@@ -1,3 +1,4 @@
+"use client"
 import { InlineContact } from "@/components/layout/InlineContact";
 import Image from "next/image";
 import React from "react";
@@ -140,9 +141,12 @@ export const Section = () => {
             </h5>
           </div>
           <p className=" font-bitter text-[28px] leading-[40px] sm:text-[32px] sm:leading-[46px] text-[#363636]">
-            Il futuro di <span className="text-primary font-semibold">Whable </span> dipende da te. Stiamo sviluppando la prima
-            versione della nostra app, che verrà lanciata all’inizio del 2025.
-            Iscriviti per restare aggiornato e per aiutarci a costruire <span className=" text-primary font-semibold">Whable</span>,
+            Il futuro di{" "}
+            <span className="text-primary font-semibold">Whable </span> dipende
+            da te. Stiamo sviluppando la prima versione della nostra app, che
+            verrà lanciata all’inizio del 2025. Iscriviti per restare aggiornato
+            e per aiutarci a costruire{" "}
+            <span className=" text-primary font-semibold">Whable</span>,
             testando le nuove funzionalità e condividendo le tue idee con il
             nostro team.
           </p>
@@ -152,26 +156,23 @@ export const Section = () => {
       {/* 
       -----------------third div-------------------------------------- */}
 
-
-            {/* 
+      {/* 
       -----------------third div-------------------------------------- */}
 
-<div className="p-container   ">
+      <div className="p-container   ">
         <div className=" lg:px-[96px] space-y-10">
           <div className=" space-y-3">
             <h1 className="  text-[28px] leading-[38px] font-bold sm:text-[32px] sm:leading-[44px]  text-primary">
-            Sei pronto a unirti a Whable?
+              Sei pronto a unirti a Whable?
             </h1>
             <h5 className="h5 font-bold">
-            Iscriviti alla newsletter per rimanere aggiornato e contribuire a una community che rende il mondo più accessibile.
+              Iscriviti alla newsletter per rimanere aggiornato e contribuire a
+              una community che rende il mondo più accessibile.
             </h5>
           </div>
-    <div>
-
-                <InlineContact/>
-
-
-    </div>
+          <div>
+            <InlineContact />
+          </div>
         </div>
       </div>
 
