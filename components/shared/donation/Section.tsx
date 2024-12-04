@@ -16,23 +16,31 @@ export const Section = async () => {
           <div className=" lg:px-[96px] space-y-10">
             <div className=" space-y-4">
               <h1 className="  text-[28px] leading-[38px] font-bold sm:text-[32px] sm:leading-[44px]  text-primary">
-                {data?.mainSection?.title || "Sentiti libero di esplorare con Whable"}
+                {data?.mainSection?.title ||
+                  "Sentiti libero di esplorare con Whable"}
               </h1>
-              <h5 className="h5 font-bold">{data?.mainSection?.subtitle || "Libertà senza barriere"}</h5>
+              <h5 className="h5 font-bold">
+                {data?.mainSection?.subtitle || "Libertà senza barriere"}
+              </h5>
               <p className=" font-bitter text-[28px] leading-[40px] sm:text-[32px] sm:leading-[46px] text-[#363636]">
                 {data?.mainSection?.description ? (
-                  data?.mainSection?.description.split(/\b(Whable)\b/).map((part: string, i: number) => (
-                    <React.Fragment key={i}>
-                      {part === 'Whable' ? (
-                        <span className="text-primary font-semibold">{part}</span>
-                      ) : (
-                        part
-                      )}
-                    </React.Fragment>
-                  ))
+                  data?.mainSection?.description
+                    .split(/\b(Whable)\b/)
+                    .map((part: string, i: number) => (
+                      <React.Fragment key={i}>
+                        {part === "Whable" ? (
+                          <span className="text-primary font-semibold">
+                            {part}
+                          </span>
+                        ) : (
+                          part
+                        )}
+                      </React.Fragment>
+                    ))
                 ) : (
                   <>
-                    Con <span className=" text-primary font-semibold"> Whable</span>{" "}
+                    Con{" "}
+                    <span className=" text-primary font-semibold"> Whable</span>{" "}
                     vogliamo creare una community inclusiva e una mappa
                     dell'accessibilità per permettere a tutti di vivere il mondo
                     senza limiti.
@@ -42,17 +50,23 @@ export const Section = async () => {
             </div>
             <div className=" space-y-10  font-bitter text-[28px] leading-[40px] sm:text-[32px] sm:leading-[46px] text-[#363636]">
               <p>
-                {data?.mainSection?.supportText || "Sostieni il progetto e aiuta le persone con disabilità a spostarsi in sicurezza e godersi le esperienze outdoor senza ostacoli."}
+                {data?.mainSection?.supportText ||
+                  "Sostieni il progetto e aiuta le persone con disabilità a spostarsi in sicurezza e godersi le esperienze outdoor senza ostacoli."}
               </p>
-              <Button className=" font-gabarito flex mx-auto lg:mx-0">
-                {data?.mainSection?.buttonText || (
-                  <>
-                    <span className="flex sm:hidden">Campagna di Crowdfunding</span>
-                    <span className="hidden sm:flex">Sostieni la nostra campagna di Crowdfunding</span>
-                  </>
-                )}{" "}
-                <ArrowRight className="ml-2" />
-              </Button>
+              <div className=" flex  justify-center  lg:justify-start w-full">
+                <Button className=" font-gabarito ">
+                  {data?.mainSection?.buttonText || (
+                    <>
+                      {" "}
+                      <p className="flex sm:hidden">Campagna di Crowdfunding</p>
+                      <p className="hidden sm:flex">
+                      Sostieni la nostra campagna di Crowdfunding
+                      </p>
+                    </>
+                  )}{" "}
+                  <ArrowRight className="sm:flex hidden" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -77,15 +91,17 @@ export const Section = async () => {
         <div className=" flex-1 space-y-4">
           <h2 className=" h2">
             {data?.valueSection?.title ? (
-              data?.valueSection?.title.split(/\b(Whable:?)\b/).map((part: string, index: number) => (
-                <React.Fragment key={index}>
-                  {part === 'Whable' || part === ':' ? (
-                    <span className="text-primary">{part}</span>
-                  ) : (
-                    part
-                  )}
-                </React.Fragment>
-              ))
+              data?.valueSection?.title
+                .split(/\b(Whable:?)\b/)
+                .map((part: string, index: number) => (
+                  <React.Fragment key={index}>
+                    {part === "Whable" || part === ":" ? (
+                      <span className="text-primary">{part}</span>
+                    ) : (
+                      part
+                    )}
+                  </React.Fragment>
+                ))
             ) : (
               <>
                 <span className=" text-primary"> Whable:</span> Valorizzare
@@ -95,7 +111,8 @@ export const Section = async () => {
           </h2>
 
           <h5 className=" h5">
-            {data?.valueSection?.description || "Esplora con fiducia, grazie a una piattaforma che ti offre informazioni precise e aggiornate, e ti permette di connetterti con una community di persone che condividono la tua esperienza."}
+            {data?.valueSection?.description ||
+              "Esplora con fiducia, grazie a una piattaforma che ti offre informazioni precise e aggiornate, e ti permette di connetterti con una community di persone che condividono la tua esperienza."}
           </h5>
         </div>
       </div>
