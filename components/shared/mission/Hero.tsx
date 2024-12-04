@@ -14,16 +14,15 @@ export const Hero = async () => {
             <h1 className=" h1 leading-[60px]">
               {data?.hero?.title ? (
                 <>
-                  {data?.hero?.title?.includes('Whable:') ? (
-                    data?.hero?.title?.split('Whable:').map((part: string, index: number) => 
-                      index === 0 ? part : (
-                        <React.Fragment key={index}>
-                          <span style={{color: '#FF6B00'}}>Whable:</span>
-                          {part}
-                        </React.Fragment>
-                      )
-                    )
-                  ) : data?.hero?.title}
+                  {data?.hero?.title.split(/\b(Whable?)\b/).map((part: string, index: number) => (
+                    <React.Fragment key={index}>
+                      {part === 'Whable' ? (
+                        <span className="text-primary">{part}</span>
+                      ) : (
+                        part
+                      )}
+                    </React.Fragment>
+                  ))}
                 </>
               ) : (
                 <><span className=" text-primary"> Whable:</span> Muoversi Liberi,

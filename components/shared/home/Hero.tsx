@@ -15,7 +15,23 @@ const Hero = async () => {
         <div className="flex-1 flex justify-center items-center   ">
           <div className="  space-y-6  py-10 lg:py-0 px-8  sm:px-[90px] lg:pl-[65px]   xl:pl-[156px] lg:pr-[2.65rem] xl:pr-[4.25rem] ">
             <h1 className=" h1 leading-[60px]">
-              {data?.hero?.title || "Il viaggio di Marco e la nascita di Whable"}
+              {data?.hero?.title ? (
+                <>
+                  {data?.hero?.title.split(/\b(Whable|Marco)\b/).map((part: string, index: number) => (
+                    <React.Fragment key={index}>
+                      {['Whable', 'Marco'].includes(part) ? (
+                        <div className="text-primary">{part}</div>
+                      ) : (
+                        part
+                      )}
+                    </React.Fragment>
+                  ))}
+                </>
+              ) : (
+                <>
+                  Il viaggio di <span className="text-primary">Marco</span> e la nascita di <span className="text-primary">Whable</span>
+                </>
+              )}
             </h1>
 
             <p>
@@ -46,11 +62,23 @@ const Hero = async () => {
       <div className=" p-container bg-white z-10  ">
         <div className="  space-y-4 lg:px-[96px]">
           <h4 className=" font-garabito font-bold text-[#363636] text-[20px] leading-[28px]">
-            {data?.subhero?.title || "Whable"}
+            {data?.subhero?.title || "Libertà e autonomia per tutti"}
           </h4>
 
           <p className="  text-[28px] leading-[40px] sm:text-[32px] sm:leading-[46px]  lg:text-[36px] lg:leading-[50px]  font-bitter">
-            {data?.subhero?.description || "La nostra missione è rendere il mondo più accessibile per tutti"}
+            {data?.subhero?.description ? (
+              data?.subhero?.description.split(/\b(Whable)\b/).map((part: string, index: number) => (
+                <React.Fragment key={index}>
+                  {part === 'Whable' ? (
+                    <span className="text-primary font-semibold">{part}</span>
+                  ) : (
+                    part
+                  )}
+                </React.Fragment>
+              ))
+            ) : (
+              <><span className="text-primary font-semibold">Whable</span> si impegna a restituire autonomia a chi è discriminato o limitato da barriere fisiche e sociali.</>
+            )}
           </p>
         </div>
       </div>

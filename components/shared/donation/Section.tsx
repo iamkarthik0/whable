@@ -20,7 +20,17 @@ export const Section = async () => {
               </h1>
               <h5 className="h5 font-bold">{data?.mainSection?.subtitle || "Libertà senza barriere"}</h5>
               <p className=" font-bitter text-[28px] leading-[40px] sm:text-[32px] sm:leading-[46px] text-[#363636]">
-                {data?.mainSection?.description || (
+                {data?.mainSection?.description ? (
+                  data?.mainSection?.description.split(/\b(Whable)\b/).map((part: string, i: number) => (
+                    <React.Fragment key={i}>
+                      {part === 'Whable' ? (
+                        <span className="text-primary font-semibold">{part}</span>
+                      ) : (
+                        part
+                      )}
+                    </React.Fragment>
+                  ))
+                ) : (
                   <>
                     Con <span className=" text-primary font-semibold"> Whable</span>{" "}
                     vogliamo creare una community inclusiva e una mappa
@@ -37,8 +47,8 @@ export const Section = async () => {
               <Button className=" font-gabarito flex mx-auto lg:mx-0">
                 {data?.mainSection?.buttonText || (
                   <>
-                    <span className="sm:hidden">Campagna di Crowdfunding</span>
-                    <span className="hidden sm:inline">Sostieni la nostra campagna di Crowdfunding</span>
+                    <span className="flex sm:hidden">Campagna di Crowdfunding</span>
+                    <span className="hidden sm:flex">Sostieni la nostra campagna di Crowdfunding</span>
                   </>
                 )}{" "}
                 <ArrowRight className="ml-2" />
@@ -66,7 +76,17 @@ export const Section = async () => {
 
         <div className=" flex-1 space-y-4">
           <h2 className=" h2">
-            {data?.valueSection?.title || (
+            {data?.valueSection?.title ? (
+              data?.valueSection?.title.split(/\b(Whable:?)\b/).map((part: string, index: number) => (
+                <React.Fragment key={index}>
+                  {part === 'Whable' || part === ':' ? (
+                    <span className="text-primary">{part}</span>
+                  ) : (
+                    part
+                  )}
+                </React.Fragment>
+              ))
+            ) : (
               <>
                 <span className=" text-primary"> Whable:</span> Valorizzare
                 l'accessibilità

@@ -30,10 +30,15 @@ export const Section = () => {
           </div>
           <p className=" font-bitter text-[28px] leading-[40px] sm:text-[32px] sm:leading-[46px] text-[#363636]">
             {content?.visionSection?.description ? (
-              content.visionSection.description.replace(
-                /Whable/g,
-                '<span class="text-primary font-semibold">Whable</span>'
-              )
+              content?.visionSection?.description.split(/\b(Whable)\b/).map((part: string, index: number) => (
+                <React.Fragment key={index}>
+                  {part === 'Whable' ? (
+                    <span className="text-primary font-semibold">{part}</span>
+                  ) : (
+                    part
+                  )}
+                </React.Fragment>
+              ))
             ) : (
               <><span className=" text-primary font-semibold">Whable</span> mira a
               diventare il punto di riferimento globale per l'accessibilità,
@@ -63,10 +68,15 @@ export const Section = () => {
         <div className=" flex-1 space-y-4">
           <h2 className=" h2">
             {content?.valueSection?.title ? (
-              content.valueSection.title.replace(
-                /Whable/g,
-                '<span class="text-primary">Whable</span>'
-              )
+              content?.valueSection?.title.split(/\b(Whable:?)\b/).map((part: string, index: number) => (
+                <React.Fragment key={index}>
+                  {part === 'Whable' || part === ':' ? (
+                    <span className="text-primary">{part}</span>
+                  ) : (
+                    part
+                  )}
+                </React.Fragment>
+              ))
             ) : (
               <><span className=" text-primary"> Whable:</span> Valorizzare
               l'accessibilità</>
@@ -75,10 +85,15 @@ export const Section = () => {
 
           <h5 className=" h5">
             {content?.valueSection?.description ? (
-              content.valueSection.description.replace(
-                /Whable/g,
-                '<span class="text-primary">Whable</span>'
-              )
+              content?.valueSection?.description.split(/\b(Whable)\b/).map((part: string, index: number) => (
+                <React.Fragment key={index}>
+                  {part === 'Whable' ? (
+                    <span className="text-primary">{part}</span>
+                  ) : (
+                    part
+                  )}
+                </React.Fragment>
+              ))
             ) : (
               <><span className=" text-primary"> Whable</span> è una
               piattaforma innovativa dedicata a migliorare la mobilità delle

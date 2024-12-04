@@ -17,11 +17,23 @@ export const Section = async () => {
             </div>
 
             <div className=" space-y-10  font-bitter text-[28px] leading-[40px] sm:text-[32px] sm:leading-[46px] text-[#363636]">
-              {data?.missionSection?.description ? (
-                data.missionSection.description.map((paragraph: string, index: number) => (
-                  <p key={index}>{paragraph}</p>
-                ))
-              ) : (
+              {data?.missionSection?.description?.map((paragraph: string, index: number) => (
+                <p key={index}>
+                  {index === 0 ? (
+                    paragraph.split(/\b(Whable)\b/).map((part: string, i: number) => (
+                      <React.Fragment key={i}>
+                        {part === 'Whable' ? (
+                          <span className="text-primary font-semibold">{part}</span>
+                        ) : (
+                          part
+                        )}
+                      </React.Fragment>
+                    ))
+                  ) : (
+                    paragraph
+                  )}
+                </p>
+              )) || (
                 <>
                   <p>
                     <span className=" text-primary font-semibold">Whable </span> non

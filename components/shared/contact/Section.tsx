@@ -13,7 +13,7 @@ export const Section = async () => {
           <div className=" lg:px-[96px] space-y-10">
             <div className=" space-y-4">
               <h1 className="  text-[28px] leading-[38px] font-bold sm:text-[32px] sm:leading-[44px]  text-primary">
-                {data?.mainSection?.title || "Sentiti libero di esplorare con Whable"}
+                {data?.mainSection?.title || "Vuoi più informazioni sul mondo di Whable, scrivici!"}
               </h1>
               <h5 className="h5 font-bold">
                 {data?.mainSection?.subtitle || "Vuoi scoprire come migliorare la tua vita e quella degli altri? Contattaci e unisciti alla nostra rete di persone con disabilità che lavorano insieme per un mondo più accessibile."}
