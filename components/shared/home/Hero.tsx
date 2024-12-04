@@ -5,7 +5,7 @@ import React from "react";
 import { getHomeContent } from "@/app/actions/getHomeContent";
 
 const Hero = async () => {
-  const { data } = await getHomeContent();
+  const { success, data } = await getHomeContent();
 
   return (
     <div className=" relative   ">
@@ -16,17 +16,15 @@ const Hero = async () => {
           <div className="  space-y-6  py-10 lg:py-0 px-8  sm:px-[90px] lg:pl-[65px]   xl:pl-[156px] lg:pr-[2.65rem] xl:pr-[4.25rem] ">
             <h1 className=" h1 leading-[60px]">
               {data?.hero?.title ? (
-                <>
-                  {data?.hero?.title.split(/\b(Whable|Marco)\b/).map((part: string, index: number) => (
-                    <React.Fragment key={index}>
-                      {['Whable', 'Marco'].includes(part) ? (
-                        <div className="text-primary">{part}</div>
-                      ) : (
-                        part
-                      )}
-                    </React.Fragment>
-                  ))}
-                </>
+                data?.hero?.title.split(/\b(Whable|Marco)\b/).map((part: string, index: number) => (
+                  <React.Fragment key={index}>
+                    {part === 'Whable' || part === 'Marco' ? (
+                      <span className="text-primary">{part}</span>
+                    ) : (
+                      part
+                    )}
+                  </React.Fragment>
+                ))
               ) : (
                 <>
                   Il viaggio di <span className="text-primary">Marco</span> e la nascita di <span className="text-primary">Whable</span>
@@ -39,7 +37,7 @@ const Hero = async () => {
             </p>
 
             <Button className="gap-2 w-full sm:max-w-[268px]  font-gabarito font-bold">
-                {data?.hero?.subtitle || "Abbatti le barriere"} <ArrowRight size={16} />
+              {data?.hero?.subtitle || "Abbatti le barriere"} <ArrowRight size={16} />
             </Button>
           </div>
         </div>
